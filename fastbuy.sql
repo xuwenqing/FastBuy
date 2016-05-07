@@ -31,7 +31,7 @@ values
 	('200元秒杀小米5',20,'2016-5-7','2015-6-1');
 
 CREATE TABLE `success_buy` (
-`fastbug_id`  bigint NOT NULL COMMENT '秒杀商品id' ,
+`fastbuy_id`  bigint NOT NULL COMMENT '秒杀商品id' ,
 `user_phone`  bigint NOT NULL COMMENT '用户手机号' ,
 `state`  tinyint NOT NULL COMMENT '状态表示：-1：无效 0：成功 1：已付款' ,
 `create_time`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
