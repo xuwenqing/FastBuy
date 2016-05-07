@@ -35,8 +35,8 @@ CREATE TABLE `success_buy` (
 `user_phone`  bigint NOT NULL COMMENT '用户手机号' ,
 `state`  tinyint NOT NULL COMMENT '状态表示：-1：无效 0：成功 1：已付款' ,
 `create_time`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
-PRIMARY KEY (`fastbug_id`),
-INDEX `idx_create_time` (`create_time`) 
+PRIMARY KEY (`fastbug_id`,`user_phone`),
+INDEX `idx_create_time` (`create_time`)
 )
 ENGINE=InnoDB
 DEFAULT CHARACTER SET=utf8
