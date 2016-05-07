@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="fastbuy.dao.SuccessBuyDao">
+    <insert id="insertSuccessBuy">
+        insert ignore into success_buy(fastbuy_id,user_phone)
+        values (#{fastbuyId},#{userPhone})
+    </insert>
+
+    <select id="queryByIdWithFastBuy" resultType="SuccessBuy">
+        select
+        sb.fastbuy_id,
+        sb.user_phone,
+        sb.create_time,
+        sb.state,
+        f.fastbuy_id "fastBuy.fastbuy_id",
+        f.name "fastBuy.name",
+        f.number "fastBuy.number",
+        f.start_time "fastBuy.start_time",
+        f.end_time "fastBuy.end_time",
+        f.create_time "fastBuy.create_time"
+        from success_buy sb
+        inner join fastbuy f on sb.fastbuy_id = f.fastbuy_id
+        where sb.fastbuy_id = #{fastbuyId}
+    </select>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="fastbuy.dao.FastBuyDao">
+    <update id="reduceNumber">
+        update
+          fastbuy
+        set
+          number = number - 1
+        where fastbuy_id = #{fastbuyId}
+        and start_time <![CDATA[ <= ]]> #{buyTime}
+        and end_time >= #{buyTime}
+        and number > 0;
+    </update>
+
+    <select id="queryById" resultType="FastBuy" parameterType="long">
+        select fastbuy_id,name,number,start_time,end_time,create_time
+        from fastbuy
+        where fastbuy_id = #{fastbuyId}
+    </select>
+
+    <select id="queryAll" resultType="FastBuy">
+        select fastbuy_id,name,number,start_time,end_time,create_time
+        from fastbuy
+        order by create_time desc
+        limit #{offset},#{limit}
+    </select>
+</mapper>
